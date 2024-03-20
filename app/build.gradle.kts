@@ -71,3 +71,11 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
+
+koverReport {
+    filters {
+        excludes {
+            annotatedBy("androidx.compose.ui.tooling.preview.Preview")
+        }
+    }
+}
