@@ -1,3 +1,6 @@
+import kotlinx.kover.gradle.plugin.dsl.AggregationType
+import kotlinx.kover.gradle.plugin.dsl.MetricType
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -78,6 +81,23 @@ koverReport {
         filters {
             excludes {
                 annotatedBy("androidx.compose.ui.tooling.preview.Preview")
+            }
+        }
+
+        verify {
+            rule("line-coverage") {
+                bound {
+                    aggregation = AggregationType.COVERED_PERCENTAGE
+                    metric = MetricType.LINE
+                    minValue = 90
+                }
+            }
+            rule("branch-coverage") {
+                bound {
+                    aggregation = AggregationType.COVERED_PERCENTAGE
+                    metric = MetricType.BRANCH
+                    minValue = 80
+                }
             }
         }
     }
