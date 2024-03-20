@@ -73,9 +73,12 @@ dependencies {
 }
 
 koverReport {
-    filters {
-        excludes {
-            annotatedBy("androidx.compose.ui.tooling.preview.Preview")
+
+    androidReports("debug") {
+        filters {
+            excludes {
+                annotatedBy("androidx.compose.ui.tooling.preview.Preview")
+            }
         }
     }
 }
